@@ -3,18 +3,42 @@
         xmlns:vm="using:AgOpenGPSConfig.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:models="clr-namespace:AgOpenGPSConfig.Models"
+        mc:Ignorable="d" d:DesignWidth="995" d:DesignHeight="715"
         x:Class="AgOpenGPSConfig.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="AgOpenGPSConfig">
+        Width="995" Height="715" Background="#DDEEFF"
+        CanResize="False" ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen"
+        Title="Configuration">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    
+    <Grid RowDefinitions="*,66" ColumnDefinitions="120,*">
+        <ScrollViewer Grid.RowSpan="2"  Grid.Column="0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                <TreeView ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}" Margin="4, 4,0,4">
+                    
+                    <TreeView.DataTemplates>
+                        <TreeDataTemplate DataType="models:SideElement" ItemsSource="{Binding Children}">
+                            <Image Source="{Binding IconPath}" HorizontalAlignment="Left"/>
+                        </TreeDataTemplate>
+                    </TreeView.DataTemplates>
+                </TreeView>
+            </ScrollViewer>
+        
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="#90EE90" BorderThickness="4" Background="#f5f5f5" Margin="0,4,4,4">
+            <TextBlock Text="hello" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    
+        <Border Grid.Row="1" Grid.Column="1" Background="Transparent">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Текст 1" Foreground="Black" Margin="10,0"/>
+                <TextBlock Text="Текст 2" Foreground="Black" Margin="10,0"/>
+                <TextBlock Text="Текст 3" Foreground="Black" Margin="10,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

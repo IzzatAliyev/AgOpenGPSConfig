@@ -21,3 +21,10 @@ Macos:
 ```
 dotnet publish -c Release -r osx-x64 --self-contained true /p:PublishSingleFile=true
 ```
+
+
+Packages added:
+
+```
+dotnet add package Avalonia.ReactiveUI
+```
