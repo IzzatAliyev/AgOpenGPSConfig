@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using AgOpenGPSConfig.Models;
+using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using ReactiveUI;
 
@@ -9,6 +10,14 @@ namespace AgOpenGPSConfig.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     public ObservableCollection<SideElement> Nodes { get; set; }
+    
+    private UserControl _currentPage;
+    public UserControl CurrentPage
+    {
+        get => _currentPage;
+        set => this.RaiseAndSetIfChanged(ref _currentPage, value);
+    }
+
     
     private SideElement _selectedNode;
     public SideElement SelectedNode
@@ -20,6 +29,11 @@ public partial class MainWindowViewModel : ViewModelBase
             if (value?.Children?.Any() == true)
             {
                 SelectedNode = value.Children.First();
+            }
+            
+            if (value?.Page != null)
+            {
+                CurrentPage = value.Page;
             }
         }
     }
@@ -33,10 +47,12 @@ public partial class MainWindowViewModel : ViewModelBase
                 new SideElement
                 {
                     IconPath = new Bitmap("Assets/ConS_ImplementConfig.png"),
+                    Page = new Views.UserControls.VehicleImplementConfigUserControl() 
                 },
                 new SideElement
                 {
                     IconPath = new Bitmap("Assets/ConS_ImplementHitch.png"),
+                    Page = new Views.UserControls.VehicleImplementConfigUserControl() 
                 },
                 new SideElement
                 {

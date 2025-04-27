@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:userControls="clr-namespace:AgOpenGPSConfig.Views.UserControls"
+             xmlns:vm="using:AgOpenGPSConfig.ViewModels"
+             x:DataType="vm:VehicleImplementConfigViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AgOpenGPSConfig.Views.UserControls.VehicleImplementConfigUserControl">
+   
+    <UserControl.DataContext>
+        <vm:VehicleImplementConfigViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Vehicle Type:" Foreground="Black" FontSize="12" Margin="20,30,0,0" />
+            <Border BorderBrush="LightGray" BorderThickness="1" Margin="15, 0, 0, 0" MinHeight="100" MinWidth="410" MaxHeight="100" MaxWidth="410" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,30,15" PointerPressed="OnHarvesterClicked">
+                        <Image Source="/Assets/vehiclePageHarvester.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="127" Width="83" Stretch="Uniform"/>
+                    </Border>
+                    <Border Background="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30,20,30,15" PointerPressed="OnTractorClicked">
+                        <Image Source="/Assets/vehiclePageTractor.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="127" Width="83" Stretch="Uniform"/>
+                    </Border>
+                    <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30,20,20,15" PointerPressed="OnArticulatedClicked">
+                        <Image Source="/Assets/vehiclePageArticulated.png" HorizontalAlignment="Right" VerticalAlignment="Top" Height="127" Width="83" Stretch="Uniform"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    
+        <ContentControl Content="{Binding CurrentPage}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        
+        <TextBlock Text="No Image:" Foreground="Black" Margin="0, 30, 100, 0" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Border BorderBrush="LightGray" BorderThickness="1" MaxHeight="90" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20,50,90,0">
+            <Image Source="/Assets/TriangleVehicle.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="127" Width="83" Stretch="Uniform"/>
+        </Border>
+        
+        <Border HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,70" Height="200" Width="200">
+            <Border.Background>
+                <ImageBrush Source="/Assets/VehicleOpacity.png"/>
+            </Border.Background>
+            <Image Source="/Assets/z_TractorAoG.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"/>
+        </Border>
+        
+        <TextBlock Text="Opacity:" Foreground="Black" Margin="0, 0, 100, 150" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"/>
+        <TextBlock Text="100%" Foreground="Black" Margin="0, 0, 80, 100" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="34"/>
+        <Border BorderBrush="LightGray" BorderThickness="1" MaxHeight="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,180,100">
+            <Image Source="/Assets/DnArrow64.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" Stretch="Uniform"/>
+        </Border>
+        <Border BorderBrush="LightGray" BorderThickness="1" MaxHeight="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20,0,20,100">
+            <Image Source="/Assets/UpArrow64.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" Stretch="Uniform"/>
+        </Border>
+    </Grid>
+</UserControl>

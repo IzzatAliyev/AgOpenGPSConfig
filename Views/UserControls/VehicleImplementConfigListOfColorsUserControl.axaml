@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:AgOpenGPSConfig.ViewModels"
+             x:DataType="vm:VehicleImplementConfigViewModel"
+             x:Class="AgOpenGPSConfig.Views.UserControls.VehicleImplementConfigListOfColorsUserControl">
+    
+    <StackPanel Margin="90, 170, 0,0">
+        <ListBox x:Name="ColorListBox" 
+                 ItemsSource="{Binding ColorList}" 
+                 Margin="0,0,0,10">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" 
+                               ItemWidth="80" 
+                               ItemHeight="80" 
+                               MaxWidth="300" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Background="White" 
+                                Width="80" 
+                                Height="80" 
+                                Margin="20"> <!-- Отступ между элементами -->
+                        <Image Source="{Binding }" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Height="80" 
+                               Width="80" 
+                               Stretch="Uniform"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>
